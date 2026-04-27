@@ -13,6 +13,7 @@
  *   "accentWord": "string? — large decorative word shown in right panel"
  * }
  */
+import Image from "next/image";
 import Eyebrow from "@/components/Eyebrow";
 import SplitHeadline from "@/components/SplitHeadline";
 
@@ -47,7 +48,7 @@ export default function HeroSplit({ id, eyebrow, headline, headlineAccent, body,
             accent={headlineAccent}
             level="h1"
             className="anim-fade-up delay-1"
-            style={{ fontSize: "clamp(2.5rem, 5vw, 4.5rem)", marginBottom: "1.5rem" }}
+            style={{ fontSize: "clamp(2rem, 3.5vw, 3.5rem)", marginBottom: "1.5rem" }}
           />
           <p className="anim-fade-up delay-2" style={{ fontFamily: "var(--font-body)", fontSize: "1.1rem", color: "var(--color-secondary)", lineHeight: 1.75, marginBottom: "2.5rem", maxWidth: "440px" }}>
             {body}
@@ -59,14 +60,23 @@ export default function HeroSplit({ id, eyebrow, headline, headlineAccent, body,
         </div>
       </div>
 
-      {/* Right — accent panel */}
-      <div style={{ background: "var(--color-accent-dark)", display: "flex", alignItems: "center", justifyContent: "center", position: "relative", overflow: "hidden" }}>
-        <div aria-hidden="true" style={{ position: "absolute", top: "-20%", right: "-10%", width: "60%", height: "60%", borderRadius: "50%", background: "rgba(255,255,255,0.06)" }} />
-        <div aria-hidden="true" style={{ position: "absolute", bottom: "-15%", left: "-5%", width: "50%", height: "50%", borderRadius: "50%", background: "rgba(255,255,255,0.04)" }} />
+      {/* Right — background image panel */}
+      <div style={{ position: "relative", overflow: "hidden" }}>
+        <Image
+          src="/Mercer_Street_Background.webp"
+          alt=""
+          fill
+          style={{ objectFit: "cover", objectPosition: "center" }}
+          priority
+        />
+        {/* Dark overlay for contrast */}
+        <div aria-hidden="true" style={{ position: "absolute", inset: 0, background: "rgba(28,48,24,0.45)" }} />
         {accentWord && (
-          <span style={{ fontFamily: "var(--font-display)", fontSize: "clamp(5rem, 12vw, 12rem)", color: "rgba(255,255,255,0.08)", fontWeight: 400, userSelect: "none", lineHeight: 1, textAlign: "center", padding: "2rem" }}>
-            {accentWord}
-          </span>
+          <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <span style={{ fontFamily: "var(--font-display)", fontSize: "clamp(5rem, 12vw, 12rem)", color: "rgba(255,255,255,0.15)", fontWeight: 400, userSelect: "none", lineHeight: 1, textAlign: "center", padding: "2rem" }}>
+              {accentWord}
+            </span>
+          </div>
         )}
       </div>
 

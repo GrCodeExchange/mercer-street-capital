@@ -10,6 +10,7 @@
  */
 "use client";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 interface Props {
   brandName: string;
@@ -37,8 +38,8 @@ export default function NavMinimal({ brandName, links = [], ctaLabel, ctaHref = 
       transition: "all 0.25s ease",
     }}>
       <div className="container" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: "64px" }}>
-        <a href="#top" style={{ fontFamily: "var(--font-display)", fontSize: "1.25rem", fontWeight: 400, textDecoration: "none", color: "var(--color-fg)" }}>
-          {brandName}
+        <a href="#top" style={{ textDecoration: "none", display: "flex", alignItems: "center" }}>
+          <Image src="/Mercer_Street_Logo.webp" alt={brandName} width={160} height={48} style={{ height: "40px", width: "auto", objectFit: "contain" }} priority />
         </a>
 
         {/* Desktop links */}

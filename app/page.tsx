@@ -28,7 +28,6 @@ export default function Home() {
         ctaPrimaryHref={"#services"}
         ctaSecondary={"Get in Touch"}
         ctaSecondaryHref={"#contact"}
-        accentWord={"Acquire"}
       />
       <StatsRow
         eyebrow={"By the Numbers"}
